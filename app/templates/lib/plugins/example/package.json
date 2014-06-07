@@ -1,0 +1,12 @@
+{
+  "name": "example",
+  "description": "The best plugin ever.",
+  "version": "0.0.0",
+  "main": "index",
+  "dependencies": {
+    "hoek": "*"
+  },
+  "peerDependencies": {
+     "hapi": "*"
+   }
+}
