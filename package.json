@@ -1,7 +1,7 @@
 {
   "name": "generator-hapi-composer",
   "description": "A hapi.js composer generator for Yeoman",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "homepage": "https://github.com/wakayama-io/generator-hapi-composer",
   "bugs": "https://github.com/wakayama-io/generator-hapi-composer/issues",
   "license": "MIT",
@@ -10,10 +10,12 @@
     "name": "Kentaro Wakayama",
     "email": "wakayama.kentaro@gmail.com"
   },
-  "contributors": [{
-    "name": "Koji Wakayama",
-    "email": "wakayama.koji@gmail.com"
-  }],
+  "contributors": [
+    {
+      "name": "Koji Wakayama",
+      "email": "wakayama.koji@gmail.com"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/wakayama-io/generator-hapi-composer"
