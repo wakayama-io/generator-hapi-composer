@@ -25,7 +25,7 @@
     "server"
   ],
   "dependencies": {
-    "yeoman-generator": "^0.16.0",
+    "yeoman-generator": "^0.17.0",
     "yosay": "^0.2.0",
     "npm-latest": "^0.2.0"
   },
