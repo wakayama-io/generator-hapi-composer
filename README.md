@@ -14,6 +14,10 @@ Should you have any problems or wishes for improvements, feel free to open up an
 ##Credits
 This generator is based on the [generator-node-gulp](https://github.com/stefanbuck/generator-node-gulp).
 
+##Contributors
+- [Koji Wakayama](https://github.com/kojiwakayama)
+- [Kentaro Wakayama](https://github.com/kwakayama)
+
 ## License
 
 Copyright (c) 2014 Kentaro Wakayama. Licensed under the [MIT License](http://en.wikipedia.org/wiki/MIT_License).
