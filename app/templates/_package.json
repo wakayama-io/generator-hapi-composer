@@ -20,7 +20,7 @@
     "composer"
   ],
   "dependencies": {
-    "hapi": "5.x.x"<% if (dependencies) { %>,
+    "hapi": "6.x.x"<% if (dependencies) { %>,
 <%= dependencies %><% } %>
   },
   "devDependencies": {

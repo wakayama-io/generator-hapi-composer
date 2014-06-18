@@ -39,7 +39,7 @@ describe('generator-hapi-composer', function () {
         ['package.json', /"dependencies": {/],
         ['package.json', /"devDependencies": {/],
         ['package.json', /"peerDependencies": {/],
-        ['package.json', /"hapi": "5.x.x"/],
+        ['package.json', /"hapi": "6.x.x"/],
         ['package.json', /"hapi": ">=2.x.x"/],
         ['package.json', /"lab": "3.x.x"/],
         ['package.json', /"node": ">=0.10.22"/],
