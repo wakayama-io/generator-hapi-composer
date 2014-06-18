@@ -44,8 +44,8 @@
   },
   "scripts": {
     "test": "gulp test",
-    "start": "node lib/index.js",
-    "postinstall": "cd lib/plugins/example/ && npm i"
+    "start": "node lib/index.js"<% if (customHapiPlugin) { %>,
+    "postinstall": "cd lib/plugins/example/ && npm i"<% } %>
   },
   "main": "lib/index.js"
 }

@@ -52,14 +52,14 @@ describe('generator-hapi-composer', function () {
         ['package.json', /"gulp-lab": "\^0.0.7"/],
         ['package.json', /"test": "gulp test"/],
         ['package.json', /"start": "node lib\/index.js"/],
-        ['package.json', /"postinstall": "cd lib\/plugins\/example\/ && npm i"/],
         ['package.json', /"main": "lib\/index.js"/]
       ];
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
         'modules': [],
-        'plugins': []
+        'customHapiPlugin': false,
+        'hapiPlugins': []
       });
 
       this.app.run({}, function () {
@@ -98,7 +98,8 @@ describe('generator-hapi-composer', function () {
         'authorEmail': 'octo@cat.com',
         'homepage': 'http://octocat.com',
         'modules': [],
-        'plugins': []
+        'customHapiPlugin': false,
+        'hapiPlugins': []
       });
 
       this.app.run({}, function () {
@@ -124,7 +125,7 @@ describe('generator-hapi-composer', function () {
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
         'modules': ['releaseModule'],
-        'plugins': []
+        'hapiPlugins': []
       });
 
       this.app.run({}, function () {
@@ -151,8 +152,40 @@ describe('generator-hapi-composer', function () {
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
         'modules': ['jscsModule'],
-        'plugins': []
+        'customHapiPlugin': false,
+        'hapiPlugins': []
       });
+
+      this.app.run({}, function () {
+        helpers.assertFile(expectedFiles);
+        helpers.assertFileContent(expectedContent);
+        done();
+      });
+    });
+  })
+
+  describe('with custom hapi plugin', function () {
+    it('creates expected files', function (done) {
+      helpers.mockPrompt(this.app, {
+        'name': 'myproject',
+        'modules': [],
+        'customHapiPlugin': true,
+        'hapiPlugins': []
+      });
+
+      var expectedFiles = [
+        'package.json',
+        'lib/plugins',
+        'lib/plugins/example',
+        'lib/plugins/example/package.json',
+        'lib/plugins/example/index.js',
+        'lib/config.json'
+      ];
+
+      var expectedContent = [
+        ['package.json', /"postinstall": "cd lib\/plugins\/example\/ && npm i"/],
+        ['lib/config.json', /"\.\.\/\.\.\/\.\.\/lib\/plugins\/example": {}/]
+      ];
 
       this.app.run({}, function () {
         helpers.assertFile(expectedFiles);
@@ -171,7 +204,8 @@ describe('generator-hapi-composer', function () {
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
         'modules': [],
-        'plugins': ['lout']
+        'customHapiPlugin': false,
+        'hapiPlugins': ['lout']
       });
 
       this.app.run({}, function () {
@@ -190,7 +224,8 @@ describe('generator-hapi-composer', function () {
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
         'modules': [],
-        'plugins': ['joi']
+        'customHapiPlugin': false,
+        'hapiPlugins': ['joi']
       });
 
       this.app.run({}, function () {

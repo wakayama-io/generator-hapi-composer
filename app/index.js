@@ -140,7 +140,7 @@ module.exports = yeoman.generators.Base.extend({
 
     var prompts = [{
       type: 'checkbox',
-      name: 'plugins',
+      name: 'hapiPlugins',
       message: 'Which hapi plugins would you like to include?',
       choices: []
     }];
@@ -156,13 +156,13 @@ module.exports = yeoman.generators.Base.extend({
 
     this.prompt(prompts, function (answers) {
       var hasMod = function (mod) {
-        return answers.plugins.indexOf(mod) !== -1;
+        return answers.hapiPlugins.indexOf(mod) !== -1;
       };
 
-      this.usedPlugins = {};
+      this.hapiPlugins = {};
       plugins.forEach(function (dep) {
         if (hasMod(dep.name)) {
-          this.usedPlugins[dep.name] = 'latest';
+          this.hapiPlugins[dep.name] = 'latest';
         }
       }.bind(this));
 
@@ -171,18 +171,34 @@ module.exports = yeoman.generators.Base.extend({
     }.bind(this));
   },
 
+  askForCustomHapiPlugin: function () {
+    var cb = this.async();
+
+    var prompts = [{
+      type: 'confirm',
+      name: 'customHapiPlugin',
+      message: 'Would you like to include boilerplate for your own hapi plugin?',
+      default: false
+    }];
+
+    this.prompt(prompts, function (answers) {
+      this.customHapiPlugin = answers.customHapiPlugin;
+      cb();
+    }.bind(this));
+  },
+
   getLatestVersions: function () {
     var cb = this.async();
-    var count = Object.keys(this.usedPlugins).length;
+    var count = Object.keys(this.hapiPlugins).length;
 
     if (count === 0) {
       return cb();
     }
 
-    for (var packageName in this.usedPlugins) {
+    for (var packageName in this.hapiPlugins) {
       npmLatest(packageName, {timeout: 1900}, function (err, result) {
         if (!err && result.name && result.version) {
-          this.usedPlugins[result.name] = result.version;
+          this.hapiPlugins[result.name] = result.version;
         }
         if (!--count) {
           cb();
@@ -193,8 +209,8 @@ module.exports = yeoman.generators.Base.extend({
 
   resolveDependencies: function () {
     this.dependencies = '';
-    for (var name in this.usedPlugins) {
-      var version = this.usedPlugins[name];
+    for (var name in this.hapiPlugins) {
+      var version = this.hapiPlugins[name];
       this.dependencies += util.format('\n    "%s": "%s",', name, version);
     }
     if (this.dependencies.length > 0) {
@@ -208,6 +224,7 @@ module.exports = yeoman.generators.Base.extend({
     this.copy('_gitignore', '.gitignore');
     this.copy('_travis.yml', '.travis.yml');
     this.copy('editorconfig', '.editorconfig');
+
     if (this.jscsModule) {
       this.copy('jscs.json', '.jscs.json');
     }
@@ -219,10 +236,13 @@ module.exports = yeoman.generators.Base.extend({
     this.mkdir('lib');
     this.template('lib/_index.js', 'lib/index.js');
     this.copy('lib/config.json', 'lib/config.json');
-    this.mkdir('lib/plugins');
-    this.mkdir('lib/plugins/example');
-    this.copy('lib/plugins/example/package.json', 'lib/plugins/example/package.json');
-    this.copy('lib/plugins/example/index.js', 'lib/plugins/example/index.js');
+
+    if(this.customHapiPlugin){
+      this.mkdir('lib/plugins');
+      this.mkdir('lib/plugins/example');
+      this.copy('lib/plugins/example/package.json', 'lib/plugins/example/package.json');
+      this.copy('lib/plugins/example/index.js', 'lib/plugins/example/index.js');
+    }
 
     this.mkdir('test');
     this.template('test/name_test.js', 'test/' + this.slugname + '_test.js');
