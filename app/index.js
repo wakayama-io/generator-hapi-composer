@@ -141,7 +141,7 @@ module.exports = yeoman.generators.Base.extend({
     var prompts = [{
       type: 'checkbox',
       name: 'plugins',
-      message: 'Which plugins would you like to include?',
+      message: 'Which hapi plugins would you like to include?',
       choices: []
     }];
 
