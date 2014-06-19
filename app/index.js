@@ -237,7 +237,7 @@ module.exports = yeoman.generators.Base.extend({
     this.template('lib/_index.js', 'lib/index.js');
     this.copy('lib/config.json', 'lib/config.json');
 
-    if(this.customHapiPlugin){
+    if (this.customHapiPlugin) {
       this.mkdir('lib/plugins');
       this.mkdir('lib/plugins/example');
       this.copy('lib/plugins/example/package.json', 'lib/plugins/example/package.json');
