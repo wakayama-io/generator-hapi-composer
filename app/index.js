@@ -235,14 +235,16 @@ module.exports = yeoman.generators.Base.extend({
 
     this.mkdir('lib');
     this.template('lib/_index.js', 'lib/index.js');
-    this.copy('lib/config.json', 'lib/config.json');
 
+    var _composerConfig = require(path.join(__dirname + '/templates/lib/_config.json'));
     if (this.customHapiPlugin) {
+      _composerConfig.plugins["../../../lib/plugins/example"] = {};
       this.mkdir('lib/plugins');
       this.mkdir('lib/plugins/example');
       this.copy('lib/plugins/example/package.json', 'lib/plugins/example/package.json');
       this.copy('lib/plugins/example/index.js', 'lib/plugins/example/index.js');
     }
+    this.write('lib/config.json', JSON.stringify(_composerConfig, null, 2));
 
     this.mkdir('test');
     this.template('test/name_test.js', 'test/' + this.slugname + '_test.js');
