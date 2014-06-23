@@ -12,17 +12,17 @@ var after = Lab.after;
 
 describe('<%= safeSlugname %>', function() {
   describe('composer', function() {
-    var composer;
+    var manifest;
 
     beforeEach(function (done) {
-      // Require a new composer instance before every test
-      composer = require('../lib/');
+      // Require a new composer manifest before every test
+      manifest = require('../lib/');
       done();
     });
 
     it('can be required without throwing', function(done) {
-      expect(composer).to.exist;
-      expect(typeof composer).to.equal('object');
+      expect(manifest).to.exist;
+      expect(typeof manifest).to.equal('object');
       done();
     });
   });

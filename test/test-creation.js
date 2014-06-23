@@ -214,24 +214,4 @@ describe('generator-hapi-composer', function () {
       });
     });
   })
-
-  describe('with joi plugin', function () {
-    it('creates expected files', function (done) {
-      var expectedContent = [
-        ['package.json', /"joi"/]
-      ];
-
-      helpers.mockPrompt(this.app, {
-        'name': 'myproject',
-        'modules': [],
-        'customHapiPlugin': false,
-        'hapiPlugins': ['joi']
-      });
-
-      this.app.run({}, function () {
-        helpers.assertFileContent(expectedContent);
-        done();
-      });
-    });
-  })
 });

@@ -5,11 +5,9 @@ var path = require('path');
 var npmLatest = require('npm-latest');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
-var Config = require('../config');
 
 module.exports = yeoman.generators.Base.extend({
   initializing: function () {
-    this.settings = new Config();
   },
 
   askForProjectInfo: function () {
@@ -32,30 +30,27 @@ module.exports = yeoman.generators.Base.extend({
     }, {
       name: 'license',
       message: 'License',
-      default: 'MIT'
+      default: 'MIT',
+      store: true
     }, {
       name: 'githubUsername',
-      message: 'GitHub username'
+      message: 'GitHub username',
+      store: true
     }, {
       name: 'authorName',
-      message: 'Author\'s Name'
+      message: 'Author\'s Name',
+      store: true
     }, {
       name: 'authorEmail',
-      message: 'Author\'s Email'
+      message: 'Author\'s Email',
+      store: true
     }, {
       name: 'authorUrl',
-      message: 'Author\'s Homepage'
+      message: 'Author\'s Homepage',
+      store: true
     }];
 
     this.currentYear = (new Date()).getFullYear();
-
-    // Write settings default values back to prompt
-    var meta = this.settings.getMeta();
-    prompts.forEach(function (val) {
-      if (meta[val.name]) {
-        val.default = meta[val.name];
-      }
-    }.bind(this));
 
     this.prompt(prompts, function (answers) {
       this.slugname = this._.slugify(answers.name);
@@ -82,8 +77,6 @@ module.exports = yeoman.generators.Base.extend({
         answers.authorUrl = answers.authorUrl.trim();
       }
 
-      this.settings.setMeta(answers);
-
       if (answers.githubUsername && answers.githubUsername.trim()) {
         this.repoUrl = 'https://github.com/' + answers.githubUsername + '/' + this.slugname;
       } else {
@@ -108,6 +101,7 @@ module.exports = yeoman.generators.Base.extend({
       type: 'checkbox',
       name: 'modules',
       message: 'Which modules would you like to include?',
+      store: true,
       choices: [{
           value: 'jscsModule',
           name: 'jscs (JavaScript Code Style checker)',
@@ -142,10 +136,13 @@ module.exports = yeoman.generators.Base.extend({
       type: 'checkbox',
       name: 'hapiPlugins',
       message: 'Which hapi plugins would you like to include?',
-      choices: []
+      choices: [],
+      store: true
     }];
 
-    var plugins = this.settings.getDependencies();
+    var plugins = [
+      {name: 'lout', description: 'API documentation generator'}
+    ];
     plugins.forEach(function (pkg) {
       prompts[0].choices.push({
         value: pkg.name,
@@ -177,7 +174,7 @@ module.exports = yeoman.generators.Base.extend({
     var prompts = [{
       type: 'confirm',
       name: 'customHapiPlugin',
-      message: 'Would you like to include boilerplate for your own hapi plugin?',
+      message: 'Would you like to include a hapi plugin boilerplate?',
       default: false
     }];
 
@@ -244,6 +241,13 @@ module.exports = yeoman.generators.Base.extend({
       this.copy('lib/plugins/example/package.json', 'lib/plugins/example/package.json');
       this.copy('lib/plugins/example/index.js', 'lib/plugins/example/index.js');
     }
+
+    if (this.hapiPlugins) {
+      Object.keys(this.hapiPlugins).forEach(function(key) {
+        _composerConfig.plugins[key] = {};
+      });
+    }
+
     this.write('lib/config.json', JSON.stringify(_composerConfig, null, 2));
 
     this.mkdir('test');

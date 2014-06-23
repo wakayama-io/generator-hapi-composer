@@ -31,18 +31,16 @@ var manifest = {
   plugins: config.plugins
 };
 
-var composer = new Hapi.Composer(manifest);
-
 if (!module.parent) {
-  composer.compose(function(err) {
+  Hapi.Pack.compose(manifest, function (err, pack) {
     if (err) {
       console.log('Failed composing');
     } else {
-      composer.start(function() {
+      pack.start(function() {
         console.log("Servers started");
       });
     }
   });
 }
 
-module.exports = composer;
+module.exports = manifest;
