@@ -28,7 +28,21 @@ You can customize the hapi-plugins prompt by editing the settings.json file whic
 {
   "generator-hapi-composer": {
     "hapiPlugins": [
-      "lout"
+      "lout",
+      "hapi-auth-cookie",
+      "bell",
+      "hapi-auth-basic",
+      "catbox",
+      "tv",
+      "scooter",
+      "poop",
+      "good",
+      "boom",
+      "reptile",
+      "yar",
+      "crumb",
+      "travelogue",
+      "bassmaster"
     ]
   }
 }
