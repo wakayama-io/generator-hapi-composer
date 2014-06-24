@@ -7,7 +7,21 @@ This generator creates a new [hapi](http://hapijs.com/) project with all the boi
 The generator provides the following optional selection of hapi-plugins by default:
 
 - [lout](https://github.com/spumko/lout)
-  
+- [hapi-auth-cookie](https://github.com/spumko/hapi-auth-cookie)
+- [bell](https://github.com/spumko/bell)
+- [hapi-auth-basic](https://github.com/spumko/hapi-auth-basic)
+- [catbox](https://github.com/spumko/catbox)
+- [tv](https://github.com/spumko/tv)
+- [scooter](https://github.com/spumko/scooter)
+- [poop](https://github.com/spumko/poop)
+- [good](https://github.com/spumko/good)
+- [boom](https://github.com/spumko/boom)
+- [reptile](https://github.com/spumko/reptile)
+- [yar](https://github.com/spumko/yar)
+- [crumb](https://github.com/spumko/crumb)
+- [travelogue](https://github.com/spumko/travelogue)
+- [bassmaster](https://github.com/spumko/bassmaster)
+
 You can customize the hapi-plugins prompt by editing the settings.json file which is located in the root of the generator. The settings.json file is generated after the first run and looks something like this:
 
 ```

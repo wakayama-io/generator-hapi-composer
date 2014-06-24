@@ -141,7 +141,21 @@ module.exports = yeoman.generators.Base.extend({
     }];
 
     var plugins = [
-      {name: 'lout', description: 'API documentation generator'}
+      {name: 'lout', description: 'API documentation generator'},
+      {name: 'hapi-auth-cookie', description: 'Cookie authentication plugin'},
+      {name: 'bell', description: 'Third-party login plugin'},
+      {name: 'hapi-auth-basic', description: 'Basic authentication plugin'},
+      {name: 'catbox', description: 'Multi-strategy object caching service'},
+      {name: 'tv', description: 'Interactive debug console'},
+      {name: 'scooter', description: 'User-agent information plugin'},
+      {name: 'poop', description: 'Plugin for handling uncaught exceptions'},
+      {name: 'good', description: 'Server and process monitoring plugin'},
+      {name: 'boom', description: 'HTTP-friendly error objects'},
+      {name: 'reptile', description: 'Plugin for creating a REPL'},
+      {name: 'yar', description: 'Session plugin and cookie jar'},
+      {name: 'crumb', description: 'CSRF crumb generation and validation'},
+      {name: 'travelogue', description: 'PassportJS integration for Hapi'},
+      {name: 'bassmaster', description: 'Batch request plugin'}
     ];
     plugins.forEach(function (pkg) {
       prompts[0].choices.push({

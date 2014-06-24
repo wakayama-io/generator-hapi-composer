@@ -197,8 +197,14 @@ describe('generator-hapi-composer', function () {
 
   describe('with lout plugin', function () {
     it('creates expected files', function (done) {
+      var expectedFiles = [
+        'package.json',
+        'lib/config.json'
+      ];
+
       var expectedContent = [
-        ['package.json', /"lout"/]
+        ['package.json', /"lout"/],
+        ['lib/config.json', /"lout": {}/]
       ];
 
       helpers.mockPrompt(this.app, {
@@ -209,6 +215,385 @@ describe('generator-hapi-composer', function () {
       });
 
       this.app.run({}, function () {
+        helpers.assertFile(expectedFiles);
+        helpers.assertFileContent(expectedContent);
+        done();
+      });
+    });
+  });
+
+  describe('with hapi-auth-cookie plugin', function () {
+    it('creates expected files', function (done) {
+      var expectedFiles = [
+        'package.json',
+        'lib/config.json'
+      ];
+
+      var expectedContent = [
+        ['package.json', /"hapi-auth-cookie"/],
+        ['lib/config.json', /"hapi-auth-cookie": {}/]
+      ];
+
+      helpers.mockPrompt(this.app, {
+        'name': 'myproject',
+        'npmModules': [],
+        'customHapiPlugin': false,
+        'hapiPlugins': ['hapi-auth-cookie']
+      });
+
+      this.app.run({}, function () {
+        helpers.assertFile(expectedFiles);
+        helpers.assertFileContent(expectedContent);
+        done();
+      });
+    });
+  });
+
+  describe('with bell plugin', function () {
+    it('creates expected files', function (done) {
+      var expectedFiles = [
+        'package.json',
+        'lib/config.json'
+      ];
+
+      var expectedContent = [
+        ['package.json', /"bell"/],
+        ['lib/config.json', /"bell": {}/]
+      ];
+
+      helpers.mockPrompt(this.app, {
+        'name': 'myproject',
+        'npmModules': [],
+        'customHapiPlugin': false,
+        'hapiPlugins': ['bell']
+      });
+
+      this.app.run({}, function () {
+        helpers.assertFile(expectedFiles);
+        helpers.assertFileContent(expectedContent);
+        done();
+      });
+    });
+  });
+
+  describe('with hapi-auth-basic plugin', function () {
+    it('creates expected files', function (done) {
+      var expectedFiles = [
+        'package.json',
+        'lib/config.json'
+      ];
+
+      var expectedContent = [
+        ['package.json', /"hapi-auth-basic"/],
+        ['lib/config.json', /"hapi-auth-basic": {}/]
+      ];
+
+      helpers.mockPrompt(this.app, {
+        'name': 'myproject',
+        'npmModules': [],
+        'customHapiPlugin': false,
+        'hapiPlugins': ['hapi-auth-basic']
+      });
+
+      this.app.run({}, function () {
+        helpers.assertFile(expectedFiles);
+        helpers.assertFileContent(expectedContent);
+        done();
+      });
+    });
+  });
+
+  describe('with catbox plugin', function () {
+    it('creates expected files', function (done) {
+      var expectedFiles = [
+        'package.json',
+        'lib/config.json'
+      ];
+
+      var expectedContent = [
+        ['package.json', /"catbox"/],
+        ['lib/config.json', /"catbox": {}/]
+      ];
+
+      helpers.mockPrompt(this.app, {
+        'name': 'myproject',
+        'npmModules': [],
+        'customHapiPlugin': false,
+        'hapiPlugins': ['catbox']
+      });
+
+      this.app.run({}, function () {
+        helpers.assertFile(expectedFiles);
+        helpers.assertFileContent(expectedContent);
+        done();
+      });
+    });
+  });
+
+  describe('with tv plugin', function () {
+    it('creates expected files', function (done) {
+      var expectedFiles = [
+        'package.json',
+        'lib/config.json'
+      ];
+
+      var expectedContent = [
+        ['package.json', /"tv"/],
+        ['lib/config.json', /"tv": {}/]
+      ];
+
+      helpers.mockPrompt(this.app, {
+        'name': 'myproject',
+        'npmModules': [],
+        'customHapiPlugin': false,
+        'hapiPlugins': ['tv']
+      });
+
+      this.app.run({}, function () {
+        helpers.assertFile(expectedFiles);
+        helpers.assertFileContent(expectedContent);
+        done();
+      });
+    });
+  });
+
+  describe('with scooter plugin', function () {
+    it('creates expected files', function (done) {
+      var expectedFiles = [
+        'package.json',
+        'lib/config.json'
+      ];
+
+      var expectedContent = [
+        ['package.json', /"scooter"/],
+        ['lib/config.json', /"scooter": {}/]
+      ];
+
+      helpers.mockPrompt(this.app, {
+        'name': 'myproject',
+        'npmModules': [],
+        'customHapiPlugin': false,
+        'hapiPlugins': ['scooter']
+      });
+
+      this.app.run({}, function () {
+        helpers.assertFile(expectedFiles);
+        helpers.assertFileContent(expectedContent);
+        done();
+      });
+    });
+  });
+
+  describe('with poop plugin', function () {
+    it('creates expected files', function (done) {
+      var expectedFiles = [
+        'package.json',
+        'lib/config.json'
+      ];
+
+      var expectedContent = [
+        ['package.json', /"poop"/],
+        ['lib/config.json', /"poop": {}/]
+      ];
+
+      helpers.mockPrompt(this.app, {
+        'name': 'myproject',
+        'npmModules': [],
+        'customHapiPlugin': false,
+        'hapiPlugins': ['poop']
+      });
+
+      this.app.run({}, function () {
+        helpers.assertFile(expectedFiles);
+        helpers.assertFileContent(expectedContent);
+        done();
+      });
+    });
+  });
+
+  describe('with good plugin', function () {
+    it('creates expected files', function (done) {
+      var expectedFiles = [
+        'package.json',
+        'lib/config.json'
+      ];
+
+      var expectedContent = [
+        ['package.json', /"good"/],
+        ['lib/config.json', /"good": {}/]
+      ];
+
+      helpers.mockPrompt(this.app, {
+        'name': 'myproject',
+        'npmModules': [],
+        'customHapiPlugin': false,
+        'hapiPlugins': ['good']
+      });
+
+      this.app.run({}, function () {
+        helpers.assertFile(expectedFiles);
+        helpers.assertFileContent(expectedContent);
+        done();
+      });
+    });
+  });
+
+  describe('with boom plugin', function () {
+    it('creates expected files', function (done) {
+      var expectedFiles = [
+        'package.json',
+        'lib/config.json'
+      ];
+
+      var expectedContent = [
+        ['package.json', /"boom"/],
+        ['lib/config.json', /"boom": {}/]
+      ];
+
+      helpers.mockPrompt(this.app, {
+        'name': 'myproject',
+        'npmModules': [],
+        'customHapiPlugin': false,
+        'hapiPlugins': ['boom']
+      });
+
+      this.app.run({}, function () {
+        helpers.assertFile(expectedFiles);
+        helpers.assertFileContent(expectedContent);
+        done();
+      });
+    });
+  });
+
+  describe('with reptile plugin', function () {
+    it('creates expected files', function (done) {
+      var expectedFiles = [
+        'package.json',
+        'lib/config.json'
+      ];
+
+      var expectedContent = [
+        ['package.json', /"reptile"/],
+        ['lib/config.json', /"reptile": {}/]
+      ];
+
+      helpers.mockPrompt(this.app, {
+        'name': 'myproject',
+        'npmModules': [],
+        'customHapiPlugin': false,
+        'hapiPlugins': ['reptile']
+      });
+
+      this.app.run({}, function () {
+        helpers.assertFile(expectedFiles);
+        helpers.assertFileContent(expectedContent);
+        done();
+      });
+    });
+  });
+
+  describe('with yar plugin', function () {
+    it('creates expected files', function (done) {
+      var expectedFiles = [
+        'package.json',
+        'lib/config.json'
+      ];
+
+      var expectedContent = [
+        ['package.json', /"yar"/],
+        ['lib/config.json', /"yar": {}/]
+      ];
+
+      helpers.mockPrompt(this.app, {
+        'name': 'myproject',
+        'npmModules': [],
+        'customHapiPlugin': false,
+        'hapiPlugins': ['yar']
+      });
+
+      this.app.run({}, function () {
+        helpers.assertFile(expectedFiles);
+        helpers.assertFileContent(expectedContent);
+        done();
+      });
+    });
+  });
+
+  describe('with crumb plugin', function () {
+    it('creates expected files', function (done) {
+      var expectedFiles = [
+        'package.json',
+        'lib/config.json'
+      ];
+
+      var expectedContent = [
+        ['package.json', /"crumb"/],
+        ['lib/config.json', /"crumb": {}/]
+      ];
+
+      helpers.mockPrompt(this.app, {
+        'name': 'myproject',
+        'npmModules': [],
+        'customHapiPlugin': false,
+        'hapiPlugins': ['crumb']
+      });
+
+      this.app.run({}, function () {
+        helpers.assertFile(expectedFiles);
+        helpers.assertFileContent(expectedContent);
+        done();
+      });
+    });
+  });
+
+  describe('with travelogue plugin', function () {
+    it('creates expected files', function (done) {
+      var expectedFiles = [
+        'package.json',
+        'lib/config.json'
+      ];
+
+      var expectedContent = [
+        ['package.json', /"travelogue"/],
+        ['lib/config.json', /"travelogue": {}/]
+      ];
+
+      helpers.mockPrompt(this.app, {
+        'name': 'myproject',
+        'npmModules': [],
+        'customHapiPlugin': false,
+        'hapiPlugins': ['travelogue']
+      });
+
+      this.app.run({}, function () {
+        helpers.assertFile(expectedFiles);
+        helpers.assertFileContent(expectedContent);
+        done();
+      });
+    });
+  });
+
+  describe('with bassmaster plugin', function () {
+    it('creates expected files', function (done) {
+      var expectedFiles = [
+        'package.json',
+        'lib/config.json'
+      ];
+
+      var expectedContent = [
+        ['package.json', /"bassmaster"/],
+        ['lib/config.json', /"bassmaster": {}/]
+      ];
+
+      helpers.mockPrompt(this.app, {
+        'name': 'myproject',
+        'npmModules': [],
+        'customHapiPlugin': false,
+        'hapiPlugins': ['bassmaster']
+      });
+
+      this.app.run({}, function () {
+        helpers.assertFile(expectedFiles);
         helpers.assertFileContent(expectedContent);
         done();
       });
