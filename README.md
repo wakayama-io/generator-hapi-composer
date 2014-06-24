@@ -31,7 +31,7 @@ You can customize the npm-modules prompt by editing the settings.json file which
 ```
 {
   "generator-hapi-composer": {
-    "modules": [
+    "npmModules": [
       "gulp-jscs",
       "gulp-bump"
     ]
