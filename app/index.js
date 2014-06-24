@@ -99,15 +99,15 @@ module.exports = yeoman.generators.Base.extend({
 
     var prompts = [{
       type: 'checkbox',
-      name: 'modules',
-      message: 'Which modules would you like to include?',
+      name: 'npmModules',
+      message: 'Which npm modules would you like to include?',
       store: true,
       choices: [{
-          value: 'jscsModule',
+          value: 'gulp-jscs',
           name: 'jscs (JavaScript Code Style checker)',
           checked: true
         }, {
-          value: 'releaseModule',
+          value: 'gulp-bump',
           name: 'release (Bump npm versions with Gulp)',
           checked: true
         }
@@ -117,11 +117,11 @@ module.exports = yeoman.generators.Base.extend({
     this.prompt(prompts, function (answers) {
 
       var hasMod = function (mod) {
-        return answers.modules.indexOf(mod) !== -1;
+        return answers.npmModules.indexOf(mod) !== -1;
       };
 
-      this.jscsModule = hasMod('jscsModule');
-      this.releaseModule = hasMod('releaseModule');
+      this.gulpJscs = hasMod('gulp-jscs');
+      this.gulpBump = hasMod('gulp-bump');
       this.coverallsModule = true;
 
       cb();
@@ -222,7 +222,7 @@ module.exports = yeoman.generators.Base.extend({
     this.copy('_travis.yml', '.travis.yml');
     this.copy('editorconfig', '.editorconfig');
 
-    if (this.jscsModule) {
+    if (this.gulpJscs) {
       this.copy('jscs.json', '.jscs.json');
     }
 

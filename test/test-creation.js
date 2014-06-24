@@ -57,7 +57,7 @@ describe('generator-hapi-composer', function () {
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'modules': [],
+        'npmModules': [],
         'customHapiPlugin': false,
         'hapiPlugins': []
       });
@@ -97,7 +97,7 @@ describe('generator-hapi-composer', function () {
         'authorName': 'Octo Cat',
         'authorEmail': 'octo@cat.com',
         'homepage': 'http://octocat.com',
-        'modules': [],
+        'npmModules': [],
         'customHapiPlugin': false,
         'hapiPlugins': []
       });
@@ -108,9 +108,9 @@ describe('generator-hapi-composer', function () {
         done();
       });
     });
-  })
+  });
 
-  describe('with releaseModule', function () {
+  describe('with gulp-bump', function () {
     it('creates expected files', function (done) {
       var expectedFiles = [
         'gulpfile.js',
@@ -124,7 +124,7 @@ describe('generator-hapi-composer', function () {
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'modules': ['releaseModule'],
+        'npmModules': ['gulp-bump'],
         'hapiPlugins': []
       });
 
@@ -134,7 +134,7 @@ describe('generator-hapi-composer', function () {
         done();
       });
     });
-  })
+  });
 
   describe('with jscs module', function () {
     it('creates expected files', function (done) {
@@ -151,7 +151,7 @@ describe('generator-hapi-composer', function () {
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'modules': ['jscsModule'],
+        'npmModules': ['gulp-jscs'],
         'customHapiPlugin': false,
         'hapiPlugins': []
       });
@@ -162,13 +162,13 @@ describe('generator-hapi-composer', function () {
         done();
       });
     });
-  })
+  });
 
   describe('with custom hapi plugin', function () {
     it('creates expected files', function (done) {
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'modules': [],
+        'npmModules': [],
         'customHapiPlugin': true,
         'hapiPlugins': []
       });
@@ -193,7 +193,7 @@ describe('generator-hapi-composer', function () {
         done();
       });
     });
-  })
+  });
 
   describe('with lout plugin', function () {
     it('creates expected files', function (done) {
@@ -203,7 +203,7 @@ describe('generator-hapi-composer', function () {
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'modules': [],
+        'npmModules': [],
         'customHapiPlugin': false,
         'hapiPlugins': ['lout']
       });
@@ -213,5 +213,5 @@ describe('generator-hapi-composer', function () {
         done();
       });
     });
-  })
+  });
 });

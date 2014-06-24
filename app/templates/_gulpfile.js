@@ -10,7 +10,7 @@ var paths = {
 
 gulp.task('lint', function () {
   return gulp.src(paths.lint)
-    .pipe(plugins.jshint('.jshintrc'))<% if (jscsModule) { %>
+    .pipe(plugins.jshint('.jshintrc'))<% if (gulpJscs) { %>
     .pipe(plugins.jscs())<% } %>
     .pipe(plugins.jshint.reporter('jshint-stylish'));
 });
@@ -20,7 +20,7 @@ gulp.task('lab', function () {
     .pipe(plugins.lab('-v -l -c'));
 });
 
-gulp.task('test', ['lint', 'lab']);<% if (releaseModule) { %>
+gulp.task('test', ['lint', 'lab']);<% if (gulpBump) { %>
 
 gulp.task('bump', ['test'], function () {
   var bumpType = plugins.util.env.type || 'patch'; // major.minor.patch
