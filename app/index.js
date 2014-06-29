@@ -136,11 +136,10 @@ module.exports = yeoman.generators.Base.extend({
       type: 'checkbox',
       name: 'hapiPlugins',
       message: 'Which hapi plugins would you like to include?',
-      choices: [],
-      store: true
+      choices: []
     }];
 
-    var plugins = [
+    var defaultPlugins = [
       {name: 'lout', description: 'API documentation generator'},
       {name: 'hapi-auth-cookie', description: 'Cookie authentication plugin'},
       {name: 'bell', description: 'Third-party login plugin'},
@@ -157,11 +156,18 @@ module.exports = yeoman.generators.Base.extend({
       {name: 'travelogue', description: 'PassportJS integration for Hapi'},
       {name: 'bassmaster', description: 'Batch request plugin'}
     ];
+
+    var plugins = this.globalConfig.get('hapiPlugins');
+    if (!plugins) {
+      this.globalConfig.set('hapiPlugins', defaultPlugins);
+      plugins = defaultPlugins;
+    }
+
     plugins.forEach(function (pkg) {
       prompts[0].choices.push({
         value: pkg.name,
         name: util.format('%s (%s)', pkg.name, pkg.description),
-        checked: false
+        checked: pkg.checked || false
       });
     });
 
