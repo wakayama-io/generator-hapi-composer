@@ -3,6 +3,22 @@
 
 This generator creates a new [hapi](http://hapijs.com/) project with all the boilerplate you need to get started. The hapi-plugins selection in the prompt will be automatically added to the composer manifest.
 
+## Installation
+
+Install the generator by running: `npm install -g generator-hapi-composer`
+
+
+## Usage
+
+Make a new directory, and cd into it.
+Run the following command and follow the prompts.
+
+```
+yo hapi-composer
+```
+
+_Note that this template will generate files in the current directory, so be sure to first change to a new directory if you don't want to overwrite existing files._
+
 ## Hapi plugins
 The generator provides the following optional selection of hapi-plugins by default:
 
@@ -22,28 +38,73 @@ The generator provides the following optional selection of hapi-plugins by defau
 - [travelogue](https://github.com/spumko/travelogue)
 - [bassmaster](https://github.com/spumko/bassmaster)
 
-You can customize the hapi-plugins prompt by editing the settings.json file which is located in the root of the generator. The settings.json file is generated after the first run and looks something like this:
+You can customize the hapi-plugins prompt by editing the .yo-rc-global.json file which is located in your home directory. The file will be generated after the first run if it doesn't already exist. The default hapi-plugin configuration in .yo-rc-global.json looks like this:
 
 ```
 {
   "generator-hapi-composer": {
-    "hapiPlugins": [
-      "lout",
-      "hapi-auth-cookie",
-      "bell",
-      "hapi-auth-basic",
-      "catbox",
-      "tv",
-      "scooter",
-      "poop",
-      "good",
-      "boom",
-      "reptile",
-      "yar",
-      "crumb",
-      "travelogue",
-      "bassmaster"
-    ]
+  "hapiPlugins": [
+        {
+          "name": "lout",
+          "description": "API documentation generator"
+        },
+        {
+          "name": "hapi-auth-cookie",
+          "description": "Cookie authentication plugin"
+        },
+        {
+          "name": "bell",
+          "description": "Third-party login plugin"
+        },
+        {
+          "name": "hapi-auth-basic",
+          "description": "Basic authentication plugin"
+        },
+        {
+          "name": "catbox",
+          "description": "Multi-strategy object caching service"
+        },
+        {
+          "name": "tv",
+          "description": "Interactive debug console"
+        },
+        {
+          "name": "scooter",
+          "description": "User-agent information plugin"
+        },
+        {
+          "name": "poop",
+          "description": "Plugin for handling uncaught exceptions"
+        },
+        {
+          "name": "good",
+          "description": "Server and process monitoring plugin"
+        },
+        {
+          "name": "boom",
+          "description": "HTTP-friendly error objects"
+        },
+        {
+          "name": "reptile",
+          "description": "Plugin for creating a REPL"
+        },
+        {
+          "name": "yar",
+          "description": "Session plugin and cookie jar"
+        },
+        {
+          "name": "crumb",
+          "description": "CSRF crumb generation and validation"
+        },
+        {
+          "name": "travelogue",
+          "description": "PassportJS integration for Hapi"
+        },
+        {
+          "name": "bassmaster",
+          "description": "Batch request plugin"
+        }
+      ]
   }
 }
 ```
@@ -51,22 +112,22 @@ You can customize the hapi-plugins prompt by editing the settings.json file whic
 ## npm modules
 The generator provides the following optional selection of npm modules by default:
 
-- [gulp-jscs](https://github.com/sindresorhus/gulp-jscs)
-- [gulp-bump](https://github.com/stevelacy/gulp-bump)
+- [joi](https://github.com/spumko/joi)
 
-You can customize the npm-modules prompt by editing the settings.json file which is located in the root of the generator. The settings.json file is generated after the first run and looks something like this:
+You can customize the npm-modules prompt by editing the .yo-rc-global.json file which is located in your home directory. The file will be generated after the first run if it doesn't already exist. The default npm-modules configuration in .yo-rc-global.json looks like this:
 
 ```
 {
   "generator-hapi-composer": {
     "npmModules": [
-      "gulp-jscs",
-      "gulp-bump"
+      {
+        "name": "joi",
+        "description": "Object schema validation"
+      }
     ]
   }
 }
 ```
-
 
 ## Contributing
 

@@ -57,9 +57,10 @@ describe('generator-hapi-composer', function () {
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'npmModules': [],
+        'devModules': [],
         'customHapiPlugin': false,
-        'hapiPlugins': []
+        'hapiPlugins': [],
+        'npmModules': []
       });
 
       this.app.run({}, function () {
@@ -97,9 +98,10 @@ describe('generator-hapi-composer', function () {
         'authorName': 'Octo Cat',
         'authorEmail': 'octo@cat.com',
         'homepage': 'http://octocat.com',
-        'npmModules': [],
+        'devModules': [],
         'customHapiPlugin': false,
-        'hapiPlugins': []
+        'hapiPlugins': [],
+        'npmModules': []
       });
 
       this.app.run({}, function () {
@@ -110,7 +112,7 @@ describe('generator-hapi-composer', function () {
     });
   });
 
-  describe('with gulp-bump', function () {
+  describe('with gulp-bump dev-module', function () {
     it('creates expected files', function (done) {
       var expectedFiles = [
         'gulpfile.js',
@@ -124,8 +126,9 @@ describe('generator-hapi-composer', function () {
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'npmModules': ['gulp-bump'],
-        'hapiPlugins': []
+        'devModules': ['gulp-bump'],
+        'hapiPlugins': [],
+        'npmModules': []
       });
 
       this.app.run({}, function () {
@@ -136,7 +139,7 @@ describe('generator-hapi-composer', function () {
     });
   });
 
-  describe('with jscs module', function () {
+  describe('with jscs dev-module', function () {
     it('creates expected files', function (done) {
       var expectedFiles = [
         'gulpfile.js',
@@ -151,9 +154,36 @@ describe('generator-hapi-composer', function () {
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'npmModules': ['gulp-jscs'],
+        'devModules': ['gulp-jscs'],
         'customHapiPlugin': false,
-        'hapiPlugins': []
+        'hapiPlugins': [],
+        'npmModules': []
+      });
+
+      this.app.run({}, function () {
+        helpers.assertFile(expectedFiles);
+        helpers.assertFileContent(expectedContent);
+        done();
+      });
+    });
+  });
+
+  describe('with joi npm-module', function () {
+    it('creates expected files', function (done) {
+      var expectedFiles = [
+        'package.json'
+      ];
+
+      var expectedContent = [
+        ['package.json', /"joi": "*"/]
+      ];
+
+      helpers.mockPrompt(this.app, {
+        'name': 'myproject',
+        'devModules': [],
+        'customHapiPlugin': false,
+        'hapiPlugins': [],
+        'npmModules': ['joi']
       });
 
       this.app.run({}, function () {
@@ -168,9 +198,10 @@ describe('generator-hapi-composer', function () {
     it('creates expected files', function (done) {
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'npmModules': [],
+        'devModules': [],
         'customHapiPlugin': true,
-        'hapiPlugins': []
+        'hapiPlugins': [],
+        'npmModules': []
       });
 
       var expectedFiles = [
@@ -209,9 +240,10 @@ describe('generator-hapi-composer', function () {
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'npmModules': [],
+        'devModules': [],
         'customHapiPlugin': false,
-        'hapiPlugins': ['lout']
+        'hapiPlugins': ['lout'],
+        'npmModules': []
       });
 
       this.app.run({}, function () {
@@ -236,9 +268,10 @@ describe('generator-hapi-composer', function () {
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'npmModules': [],
+        'devModules': [],
         'customHapiPlugin': false,
-        'hapiPlugins': ['hapi-auth-cookie']
+        'hapiPlugins': ['hapi-auth-cookie'],
+        'npmModules': []
       });
 
       this.app.run({}, function () {
@@ -263,9 +296,10 @@ describe('generator-hapi-composer', function () {
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'npmModules': [],
+        'devModules': [],
         'customHapiPlugin': false,
-        'hapiPlugins': ['bell']
+        'hapiPlugins': ['bell'],
+        'npmModules': []
       });
 
       this.app.run({}, function () {
@@ -290,9 +324,10 @@ describe('generator-hapi-composer', function () {
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'npmModules': [],
+        'devModules': [],
         'customHapiPlugin': false,
-        'hapiPlugins': ['hapi-auth-basic']
+        'hapiPlugins': ['hapi-auth-basic'],
+        'npmModules': []
       });
 
       this.app.run({}, function () {
@@ -317,9 +352,10 @@ describe('generator-hapi-composer', function () {
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'npmModules': [],
+        'devModules': [],
         'customHapiPlugin': false,
-        'hapiPlugins': ['catbox']
+        'hapiPlugins': ['catbox'],
+        'npmModules': []
       });
 
       this.app.run({}, function () {
@@ -344,9 +380,10 @@ describe('generator-hapi-composer', function () {
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'npmModules': [],
+        'devModules': [],
         'customHapiPlugin': false,
-        'hapiPlugins': ['tv']
+        'hapiPlugins': ['tv'],
+        'npmModules': []
       });
 
       this.app.run({}, function () {
@@ -371,9 +408,10 @@ describe('generator-hapi-composer', function () {
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'npmModules': [],
+        'devModules': [],
         'customHapiPlugin': false,
-        'hapiPlugins': ['scooter']
+        'hapiPlugins': ['scooter'],
+        'npmModules': []
       });
 
       this.app.run({}, function () {
@@ -398,9 +436,10 @@ describe('generator-hapi-composer', function () {
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'npmModules': [],
+        'devModules': [],
         'customHapiPlugin': false,
-        'hapiPlugins': ['poop']
+        'hapiPlugins': ['poop'],
+        'npmModules': []
       });
 
       this.app.run({}, function () {
@@ -425,9 +464,10 @@ describe('generator-hapi-composer', function () {
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'npmModules': [],
+        'devModules': [],
         'customHapiPlugin': false,
-        'hapiPlugins': ['good']
+        'hapiPlugins': ['good'],
+        'npmModules': []
       });
 
       this.app.run({}, function () {
@@ -452,9 +492,10 @@ describe('generator-hapi-composer', function () {
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'npmModules': [],
+        'devModules': [],
         'customHapiPlugin': false,
-        'hapiPlugins': ['boom']
+        'hapiPlugins': ['boom'],
+        'npmModules': []
       });
 
       this.app.run({}, function () {
@@ -479,9 +520,10 @@ describe('generator-hapi-composer', function () {
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'npmModules': [],
+        'devModules': [],
         'customHapiPlugin': false,
-        'hapiPlugins': ['reptile']
+        'hapiPlugins': ['reptile'],
+        'npmModules': []
       });
 
       this.app.run({}, function () {
@@ -506,9 +548,10 @@ describe('generator-hapi-composer', function () {
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'npmModules': [],
+        'devModules': [],
         'customHapiPlugin': false,
-        'hapiPlugins': ['yar']
+        'hapiPlugins': ['yar'],
+        'npmModules': []
       });
 
       this.app.run({}, function () {
@@ -533,9 +576,10 @@ describe('generator-hapi-composer', function () {
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'npmModules': [],
+        'devModules': [],
         'customHapiPlugin': false,
-        'hapiPlugins': ['crumb']
+        'hapiPlugins': ['crumb'],
+        'npmModules': []
       });
 
       this.app.run({}, function () {
@@ -560,9 +604,10 @@ describe('generator-hapi-composer', function () {
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'npmModules': [],
+        'devModules': [],
         'customHapiPlugin': false,
-        'hapiPlugins': ['travelogue']
+        'hapiPlugins': ['travelogue'],
+        'npmModules': []
       });
 
       this.app.run({}, function () {
@@ -587,9 +632,10 @@ describe('generator-hapi-composer', function () {
 
       helpers.mockPrompt(this.app, {
         'name': 'myproject',
-        'npmModules': [],
+        'devModules': [],
         'customHapiPlugin': false,
-        'hapiPlugins': ['bassmaster']
+        'hapiPlugins': ['bassmaster'],
+        'npmModules': []
       });
 
       this.app.run({}, function () {

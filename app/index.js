@@ -99,8 +99,8 @@ module.exports = yeoman.generators.Base.extend({
 
     var prompts = [{
       type: 'checkbox',
-      name: 'npmModules',
-      message: 'Which npm modules would you like to include?',
+      name: 'devModules',
+      message: 'Which modules would you like to include?',
       store: true,
       choices: [{
           value: 'gulp-jscs',
@@ -117,7 +117,7 @@ module.exports = yeoman.generators.Base.extend({
     this.prompt(prompts, function (answers) {
 
       var hasMod = function (mod) {
-        return answers.npmModules.indexOf(mod) !== -1;
+        return answers.devModules.indexOf(mod) !== -1;
       };
 
       this.gulpJscs = hasMod('gulp-jscs');
@@ -204,18 +204,68 @@ module.exports = yeoman.generators.Base.extend({
     }.bind(this));
   },
 
+  askForOtherNpmDependencies: function () {
+    var cb = this.async();
+
+    var prompts = [{
+      type: 'checkbox',
+      name: 'npmModules',
+      message: 'Which other npm dependencies would you like to include?',
+      choices: []
+    }];
+
+    var defaultNpmModules = [
+      {name: 'joi', description: 'Object schema validation'}
+    ];
+
+    var npmModules = this.globalConfig.get('npmModules');
+    if (!npmModules) {
+      this.globalConfig.set('npmModules', defaultNpmModules);
+      npmModules = defaultNpmModules;
+    }
+
+    npmModules.forEach(function (pkg) {
+      prompts[0].choices.push({
+        value: pkg.name,
+        name: util.format('%s (%s)', pkg.name, pkg.description),
+        checked: pkg.checked || false
+      });
+    });
+
+    this.prompt(prompts, function (answers) {
+
+      var hasMod = function (mod) {
+        return answers.npmModules.indexOf(mod) !== -1;
+      };
+
+      this.npmModules = {};
+      npmModules.forEach(function (dep) {
+        if (hasMod(dep.name)) {
+          this.npmModules[dep.name] = 'latest';
+        }
+      }.bind(this));
+
+      cb();
+
+    }.bind(this));
+  },
+
+  mergeDependencies: function () {
+    this.npmDependencies = util._extend(this.npmModules, this.hapiPlugins);
+  },
+
   getLatestVersions: function () {
     var cb = this.async();
-    var count = Object.keys(this.hapiPlugins).length;
+    var count = Object.keys(this.npmDependencies).length;
 
     if (count === 0) {
       return cb();
     }
 
-    for (var packageName in this.hapiPlugins) {
+    for (var packageName in this.npmDependencies) {
       npmLatest(packageName, {timeout: 1900}, function (err, result) {
         if (!err && result.name && result.version) {
-          this.hapiPlugins[result.name] = result.version;
+          this.npmDependencies[result.name] = result.version;
         }
         if (!--count) {
           cb();
@@ -226,8 +276,8 @@ module.exports = yeoman.generators.Base.extend({
 
   resolveDependencies: function () {
     this.dependencies = '';
-    for (var name in this.hapiPlugins) {
-      var version = this.hapiPlugins[name];
+    for (var name in this.npmDependencies) {
+      var version = this.npmDependencies[name];
       this.dependencies += util.format('\n    "%s": "%s",', name, version);
     }
     if (this.dependencies.length > 0) {
