@@ -28,7 +28,7 @@
   ],
   "dependencies": {
     "yeoman-generator": "youngmountain/generator#dont-store-defaults",
-    "yosay": "^0.2.0",
+    "yosay": "^0.3.0",
     "npm-latest": "^0.2.0"
   },
   "devDependencies": {

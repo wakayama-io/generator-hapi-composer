@@ -37,7 +37,7 @@ if (!module.parent) {
       console.log('Failed composing');
     } else {
       pack.start(function() {
-        console.log("Servers started");
+        console.log("Servers is listening on port " + config.port);
       });
     }
   });
