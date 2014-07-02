@@ -151,8 +151,7 @@ module.exports = yeoman.generators.Base.extend({
       {name: 'good', description: 'Server and process monitoring plugin'},
       {name: 'reptile', description: 'Plugin for creating a REPL'},
       {name: 'yar', description: 'Session plugin and cookie jar'},
-      {name: 'crumb', description: 'CSRF crumb generation and validation'},
-      {name: 'bassmaster', description: 'Batch request plugin'}
+      {name: 'crumb', description: 'CSRF crumb generation and validation'}
     ];
 
     var plugins = this.globalConfig.get('hapiPlugins');

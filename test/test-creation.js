@@ -585,32 +585,4 @@ describe('generator-hapi-composer', function () {
       });
     });
   });
-
-  describe('with bassmaster plugin', function () {
-    it('creates expected files', function (done) {
-      var expectedFiles = [
-        'package.json',
-        'lib/config.json'
-      ];
-
-      var expectedContent = [
-        ['package.json', /"bassmaster"/],
-        ['lib/config.json', /"bassmaster": {}/]
-      ];
-
-      helpers.mockPrompt(this.app, {
-        'name': 'myproject',
-        'devModules': [],
-        'customHapiPlugin': false,
-        'hapiPlugins': ['bassmaster'],
-        'npmModules': []
-      });
-
-      this.app.run({}, function () {
-        helpers.assertFile(expectedFiles);
-        helpers.assertFileContent(expectedContent);
-        done();
-      });
-    });
-  });
 });
