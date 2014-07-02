@@ -588,34 +588,6 @@ describe('generator-hapi-composer', function () {
     });
   });
 
-  describe('with travelogue plugin', function () {
-    it('creates expected files', function (done) {
-      var expectedFiles = [
-        'package.json',
-        'lib/config.json'
-      ];
-
-      var expectedContent = [
-        ['package.json', /"travelogue"/],
-        ['lib/config.json', /"travelogue": {}/]
-      ];
-
-      helpers.mockPrompt(this.app, {
-        'name': 'myproject',
-        'devModules': [],
-        'customHapiPlugin': false,
-        'hapiPlugins': ['travelogue'],
-        'npmModules': []
-      });
-
-      this.app.run({}, function () {
-        helpers.assertFile(expectedFiles);
-        helpers.assertFileContent(expectedContent);
-        done();
-      });
-    });
-  });
-
   describe('with bassmaster plugin', function () {
     it('creates expected files', function (done) {
       var expectedFiles = [

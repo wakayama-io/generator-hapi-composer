@@ -35,7 +35,6 @@ The generator provides the following optional selection of hapi-plugins by defau
 - [reptile](https://github.com/spumko/reptile)
 - [yar](https://github.com/spumko/yar)
 - [crumb](https://github.com/spumko/crumb)
-- [travelogue](https://github.com/spumko/travelogue)
 - [bassmaster](https://github.com/spumko/bassmaster)
 
 You can customize the hapi-plugins prompt by editing the .yo-rc-global.json file which is located in your home directory. The file will be generated after the first run if it doesn't already exist. The default hapi-plugin configuration in .yo-rc-global.json looks like this:

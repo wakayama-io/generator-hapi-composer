@@ -153,7 +153,6 @@ module.exports = yeoman.generators.Base.extend({
       {name: 'reptile', description: 'Plugin for creating a REPL'},
       {name: 'yar', description: 'Session plugin and cookie jar'},
       {name: 'crumb', description: 'CSRF crumb generation and validation'},
-      {name: 'travelogue', description: 'PassportJS integration for Hapi'},
       {name: 'bassmaster', description: 'Batch request plugin'}
     ];
 
