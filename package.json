@@ -1,7 +1,7 @@
 {
   "name": "generator-hapi-composer",
   "description": "A hapi.js composer generator for Yeoman",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "homepage": "https://github.com/wakayama-io/generator-hapi-composer",
   "bugs": "https://github.com/wakayama-io/generator-hapi-composer/issues",
   "license": "MIT",
