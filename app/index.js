@@ -144,7 +144,6 @@ module.exports = yeoman.generators.Base.extend({
       {name: 'hapi-auth-cookie', description: 'Cookie authentication plugin'},
       {name: 'bell', description: 'Third-party login plugin'},
       {name: 'hapi-auth-basic', description: 'Basic authentication plugin'},
-      {name: 'catbox', description: 'Multi-strategy object caching service'},
       {name: 'tv', description: 'Interactive debug console'},
       {name: 'scooter', description: 'User-agent information plugin'},
       {name: 'poop', description: 'Plugin for handling uncaught exceptions'},
@@ -213,7 +212,8 @@ module.exports = yeoman.generators.Base.extend({
 
     var defaultNpmModules = [
       {name: 'joi', description: 'Object schema validation'},
-      {name: 'boom', description: 'HTTP-friendly error objects'}
+      {name: 'boom', description: 'HTTP-friendly error objects'},
+      {name: 'catbox', description: 'Multi-strategy object caching service'}
     ];
 
     var npmModules = this.globalConfig.get('npmModules');

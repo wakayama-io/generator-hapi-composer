@@ -26,7 +26,6 @@ The generator provides the following optional selection of hapi-plugins by defau
 - [hapi-auth-cookie](https://github.com/spumko/hapi-auth-cookie)
 - [bell](https://github.com/spumko/bell)
 - [hapi-auth-basic](https://github.com/spumko/hapi-auth-basic)
-- [catbox](https://github.com/spumko/catbox)
 - [tv](https://github.com/spumko/tv)
 - [scooter](https://github.com/spumko/scooter)
 - [poop](https://github.com/spumko/poop)
@@ -58,10 +57,6 @@ You can customize the hapi-plugins prompt by editing the .yo-rc-global.json file
           "description": "Basic authentication plugin"
         },
         {
-          "name": "catbox",
-          "description": "Multi-strategy object caching service"
-        },
-        {
           "name": "tv",
           "description": "Interactive debug console"
         },
@@ -88,10 +83,6 @@ You can customize the hapi-plugins prompt by editing the .yo-rc-global.json file
         {
           "name": "crumb",
           "description": "CSRF crumb generation and validation"
-        },
-        {
-          "name": "bassmaster",
-          "description": "Batch request plugin"
         }
       ]
   }
@@ -103,6 +94,7 @@ The generator provides the following optional selection of npm modules by defaul
 
 - [joi](https://github.com/spumko/joi)
 - [boom](https://github.com/spumko/boom)
+- [catbox](https://github.com/spumko/catbox)
 
 You can customize the npm-modules prompt by editing the .yo-rc-global.json file which is located in your home directory. The file will be generated after the first run if it doesn't already exist. The default npm-modules configuration in .yo-rc-global.json looks like this:
 
@@ -117,6 +109,10 @@ You can customize the npm-modules prompt by editing the .yo-rc-global.json file 
       {
         "name": "boom",
         "description": "HTTP-friendly error objects"
+      },
+      {
+        "name": "catbox",
+        "description": "Multi-strategy object caching service"
       }
     ]
   }

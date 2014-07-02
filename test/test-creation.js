@@ -218,6 +218,32 @@ describe('generator-hapi-composer', function () {
     });
   });
 
+  describe('with catbox npm-module', function () {
+    it('creates expected files', function (done) {
+      var expectedFiles = [
+        'package.json'
+      ];
+
+      var expectedContent = [
+        ['package.json', /"catbox": "*"/]
+      ];
+
+      helpers.mockPrompt(this.app, {
+        'name': 'myproject',
+        'devModules': [],
+        'customHapiPlugin': false,
+        'hapiPlugins': [],
+        'npmModules': ['catbox']
+      });
+
+      this.app.run({}, function () {
+        helpers.assertFile(expectedFiles);
+        helpers.assertFileContent(expectedContent);
+        done();
+      });
+    });
+  });
+
   describe('with custom hapi plugin', function () {
     it('creates expected files', function (done) {
       helpers.mockPrompt(this.app, {
@@ -351,34 +377,6 @@ describe('generator-hapi-composer', function () {
         'devModules': [],
         'customHapiPlugin': false,
         'hapiPlugins': ['hapi-auth-basic'],
-        'npmModules': []
-      });
-
-      this.app.run({}, function () {
-        helpers.assertFile(expectedFiles);
-        helpers.assertFileContent(expectedContent);
-        done();
-      });
-    });
-  });
-
-  describe('with catbox plugin', function () {
-    it('creates expected files', function (done) {
-      var expectedFiles = [
-        'package.json',
-        'lib/config.json'
-      ];
-
-      var expectedContent = [
-        ['package.json', /"catbox"/],
-        ['lib/config.json', /"catbox": {}/]
-      ];
-
-      helpers.mockPrompt(this.app, {
-        'name': 'myproject',
-        'devModules': [],
-        'customHapiPlugin': false,
-        'hapiPlugins': ['catbox'],
         'npmModules': []
       });
 
