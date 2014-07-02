@@ -31,7 +31,6 @@ The generator provides the following optional selection of hapi-plugins by defau
 - [scooter](https://github.com/spumko/scooter)
 - [poop](https://github.com/spumko/poop)
 - [good](https://github.com/spumko/good)
-- [boom](https://github.com/spumko/boom)
 - [reptile](https://github.com/spumko/reptile)
 - [yar](https://github.com/spumko/yar)
 - [crumb](https://github.com/spumko/crumb)
@@ -80,10 +79,6 @@ You can customize the hapi-plugins prompt by editing the .yo-rc-global.json file
           "description": "Server and process monitoring plugin"
         },
         {
-          "name": "boom",
-          "description": "HTTP-friendly error objects"
-        },
-        {
           "name": "reptile",
           "description": "Plugin for creating a REPL"
         },
@@ -94,10 +89,6 @@ You can customize the hapi-plugins prompt by editing the .yo-rc-global.json file
         {
           "name": "crumb",
           "description": "CSRF crumb generation and validation"
-        },
-        {
-          "name": "travelogue",
-          "description": "PassportJS integration for Hapi"
         },
         {
           "name": "bassmaster",
@@ -112,6 +103,7 @@ You can customize the hapi-plugins prompt by editing the .yo-rc-global.json file
 The generator provides the following optional selection of npm modules by default:
 
 - [joi](https://github.com/spumko/joi)
+- [boom](https://github.com/spumko/boom)
 
 You can customize the npm-modules prompt by editing the .yo-rc-global.json file which is located in your home directory. The file will be generated after the first run if it doesn't already exist. The default npm-modules configuration in .yo-rc-global.json looks like this:
 
@@ -122,6 +114,10 @@ You can customize the npm-modules prompt by editing the .yo-rc-global.json file 
       {
         "name": "joi",
         "description": "Object schema validation"
+      },
+      {
+        "name": "boom",
+        "description": "HTTP-friendly error objects"
       }
     ]
   }

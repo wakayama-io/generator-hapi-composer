@@ -192,6 +192,32 @@ describe('generator-hapi-composer', function () {
     });
   });
 
+  describe('with boom npm-module', function () {
+    it('creates expected files', function (done) {
+      var expectedFiles = [
+        'package.json'
+      ];
+
+      var expectedContent = [
+        ['package.json', /"boom": "*"/]
+      ];
+
+      helpers.mockPrompt(this.app, {
+        'name': 'myproject',
+        'devModules': [],
+        'customHapiPlugin': false,
+        'hapiPlugins': [],
+        'npmModules': ['boom']
+      });
+
+      this.app.run({}, function () {
+        helpers.assertFile(expectedFiles);
+        helpers.assertFileContent(expectedContent);
+        done();
+      });
+    });
+  });
+
   describe('with custom hapi plugin', function () {
     it('creates expected files', function (done) {
       helpers.mockPrompt(this.app, {
@@ -465,34 +491,6 @@ describe('generator-hapi-composer', function () {
         'devModules': [],
         'customHapiPlugin': false,
         'hapiPlugins': ['good'],
-        'npmModules': []
-      });
-
-      this.app.run({}, function () {
-        helpers.assertFile(expectedFiles);
-        helpers.assertFileContent(expectedContent);
-        done();
-      });
-    });
-  });
-
-  describe('with boom plugin', function () {
-    it('creates expected files', function (done) {
-      var expectedFiles = [
-        'package.json',
-        'lib/config.json'
-      ];
-
-      var expectedContent = [
-        ['package.json', /"boom"/],
-        ['lib/config.json', /"boom": {}/]
-      ];
-
-      helpers.mockPrompt(this.app, {
-        'name': 'myproject',
-        'devModules': [],
-        'customHapiPlugin': false,
-        'hapiPlugins': ['boom'],
         'npmModules': []
       });
 

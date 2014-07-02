@@ -149,7 +149,6 @@ module.exports = yeoman.generators.Base.extend({
       {name: 'scooter', description: 'User-agent information plugin'},
       {name: 'poop', description: 'Plugin for handling uncaught exceptions'},
       {name: 'good', description: 'Server and process monitoring plugin'},
-      {name: 'boom', description: 'HTTP-friendly error objects'},
       {name: 'reptile', description: 'Plugin for creating a REPL'},
       {name: 'yar', description: 'Session plugin and cookie jar'},
       {name: 'crumb', description: 'CSRF crumb generation and validation'},
@@ -214,7 +213,8 @@ module.exports = yeoman.generators.Base.extend({
     }];
 
     var defaultNpmModules = [
-      {name: 'joi', description: 'Object schema validation'}
+      {name: 'joi', description: 'Object schema validation'},
+      {name: 'boom', description: 'HTTP-friendly error objects'}
     ];
 
     var npmModules = this.globalConfig.get('npmModules');
