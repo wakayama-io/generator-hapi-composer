@@ -36,9 +36,6 @@
     "gulp-lab": "^0.0.7",
     "lab": "3.x.x"
   },
-  "peerDependencies": {
-    "hapi": ">=2.x.x"
-  },
   "engines": {
     "node": ">=0.10.22"
   },
