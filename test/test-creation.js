@@ -38,7 +38,8 @@ describe('generator-hapi-composer', function () {
       var expectedContent = [
         ['package.json', /"dependencies": {/],
         ['package.json', /"devDependencies": {/],
-        ['package.json', /"hapi": "6.x.x"/],
+        ['package.json', /"hapi": "8.x.x"/],
+        ['package.json', /"glue": "2.x.x"/],
         ['package.json', /"lab": "3.x.x"/],
         ['package.json', /"node": ">=0.10.22"/],
         ['package.json', /"gulp": "\^3.6.2"/],
@@ -74,6 +75,9 @@ describe('generator-hapi-composer', function () {
         'package.json'
       ];
 
+      var currentYear = (new Date()).getFullYear();
+      var copyrightRe = new RegExp('\\(c\\) ' + currentYear + ' Octo Cat');
+
       var expectedContent = [
         ['package.json', /"name": "mymodule"/],
         ['package.json', /"description": "awesome module"/],
@@ -84,7 +88,7 @@ describe('generator-hapi-composer', function () {
         ['package.json', /"email": "octo@cat.com"/],
         ['package.json', /"url": "https:\/\/github.com\/octocat\/mymodule"/],
         ['lib/index.js', / \* http:\/\/octocat.com/],
-        ['lib/index.js', / \* Copyright \(c\) 2014 Octo Cat/],
+        ['lib/index.js', copyrightRe],
         ['lib/index.js', / \* Licensed under the MIT license./]
       ];
 
